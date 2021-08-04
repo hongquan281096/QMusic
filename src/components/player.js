@@ -29,8 +29,6 @@ const Player = (props) => {
   const runFirst1 = `
   document.body.style.backgroundColor = '#222';
     setTimeout(function(){
-    // document.getElementById("tokenInput__comment").focus()
-    // document.getElementById("tokenInput__comment").click()
     document.querySelector('a.snippetUXPlayButton.sc-button-play.playButton.sc-button.m-stretch').click();
   },1500);
   true ; // note: this is required, or you'll sometimes get silent failures
@@ -38,10 +36,6 @@ const Player = (props) => {
   const runFirst = `
   document.body.style.backgroundColor = '#222';
     setTimeout(function(){
-    // document.querySelector("div.playbackTimeline__progressBar").style.width= "25%";
-    // document.querySelector('a.snippetUXPlayButton.sc-button-play.playButton.sc-button.m-stretch').click();
-    // document.getElementById("tokenInput__comment").focus().click()
-    // document.querySelector('a.snippetUXPlayButton.sc-button-play.playButton.sc-button.m-stretch').click();
     document.querySelector("div.fullHero__foreground.fullListenHero__foreground").click();document.querySelector("span.sc-artwork.sc-artwork-placeholder-8.image__full.g-opacity-transition").click()
   },1500);
   true ; // note: this is required, or you'll sometimes get silent failures
@@ -116,7 +110,7 @@ const Player = (props) => {
       {Platform.OS === "ios" && playPause && (
         <LayoutIOS runFirst1={runFirst1} permalink_url={permalink_url} />
       )}
-      // {Platform.OS === "android" && playPause && (
+      {/* // {Platform.OS === "android" && playPause && (
          // <WebView
          // ref={(refs) => (webview = refs)}
          // source={{
@@ -128,7 +122,7 @@ const Player = (props) => {
          // onMessage={(event) => {}}
          // useWebKit={true}
        // ></WebView>
-      // )}
+      // )} */}
     </>
   );
 };
