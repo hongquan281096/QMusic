@@ -27,16 +27,14 @@ const Player = (props) => {
   console.log("object;", permalink_url);
   const { avatar_url, username } = itemDetails && itemDetails.user;
   const runFirst1 = `
-  document.body.style.backgroundColor = '#222';
     setTimeout(function(){
     document.querySelector('a.snippetUXPlayButton.sc-button-play.playButton.sc-button.m-stretch').click();
   },1500);
   true ; // note: this is required, or you'll sometimes get silent failures
   `;
   const runFirst = `
-  document.body.style.backgroundColor = '#222';
-    setTimeout(function(){
-    document.querySelector("div.fullHero__foreground.fullListenHero__foreground").click();document.querySelector("span.sc-artwork.sc-artwork-placeholder-8.image__full.g-opacity-transition").click()
+  setTimeout(function(){
+    document.querySelector('a.snippetUXPlayButton.sc-button-play.playButton.sc-button.m-stretch').click();
   },1500);
   true ; // note: this is required, or you'll sometimes get silent failures
   `;
@@ -110,19 +108,23 @@ const Player = (props) => {
       {Platform.OS === "ios" && playPause && (
         <LayoutIOS runFirst1={runFirst1} permalink_url={permalink_url} />
       )}
-      {/* // {Platform.OS === "android" && playPause && (
-         // <WebView
-         // ref={(refs) => (webview = refs)}
-         // source={{
-           // uri: permalink_url,
-         // }}
-         // injectedJavaScript={runFirst1}
-         // userAgent={"webview"}
-         // startInLoadingState
-         // onMessage={(event) => {}}
-         // useWebKit={true}
-       // ></WebView>
-      // )} */}
+     {Platform.OS === "android" && playPause && (
+       <View>
+          <WebView
+          source={{
+            uri: permalink_url,
+          }}
+          injectedJavaScript={runFirst}
+          userAgent={"webview"}
+          startInLoadingState
+          onMessage={(event) => {}}
+          useWebKit={true}
+          allowsInlineMediaPlayback={true}
+          mediaPlaybackRequiresUserAction={false}
+          allowUniversalAccessFromFileURLs={true}
+        ></WebView>
+       </View>
+      )}
     </>
   );
 };
