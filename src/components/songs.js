@@ -20,6 +20,7 @@ const songs = () => {
   const { fetching, items, itemDetails, selectedId, pausePlay } = useSelector(
     (state) => state.getLisMusicReducer
   );
+  const [isPause,setIsPause] =useState(true)
   const dispatch = useDispatch();
   const [isRefreshing, setRefreshing] = useState(false);
   const _handleRefreshing = async () => {
@@ -36,7 +37,8 @@ const songs = () => {
     dispatch(getListMusic({ songId: item.id }));
   };
   const handlePlayPause = async () => {
-    await dispatch(getListMusic({ songId: selectedId, type: "pausePlay" }));
+    // await dispatch(getListMusic({ songId: selectedId, type: "pausePlay" }));
+    setIsPause(!isPause)
   };
   const handleGoBack = async () => {
     await dispatch(getListMusic({ songId: selectedId, backId: selectedId }));
@@ -92,7 +94,7 @@ const songs = () => {
                 index={index}
                 callBack={() => handleCallBack(item)}
                 selectedId={selectedId}
-                playPause={pausePlay}
+                playPause={isPause}
               />
             );
           }}
@@ -122,7 +124,7 @@ const songs = () => {
           handleGoBack={handleGoBack}
           handleGoForward={handleGoForward}
           handlePlayPause={handlePlayPause}
-          playPause={pausePlay}
+          playPause={isPause}
         />
       )}
     </>
