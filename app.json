@@ -21,13 +21,21 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.qmusic.qmusic",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.qmusic.qmusic",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#222"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "READ_CONTACTS",
+        "READ_PHONE_STATE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
