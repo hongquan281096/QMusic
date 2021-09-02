@@ -11,7 +11,7 @@ import { Ionicons } from "@expo/vector-icons";
 const songItem = (props) => {
   const { playPause } = props;
   const { title, id } = props.item;
-  const { avatar_url, username } = props.item && props.item.user;
+  const { avatarUrl, username } = props.item && props.item.user;
   const selectedItem = props.selectedId;
   return (
     <TouchableHighlight opacity={0.1} onPress={props.callBack}>
@@ -19,7 +19,7 @@ const songItem = (props) => {
         <View style={styles.content}>
           <View style={styles.imageView}>
             <Image
-              source={{ uri: avatar_url }}
+              source={{ uri: avatarUrl }}
               resizeMode="cover"
               style={[
                 styles.image,

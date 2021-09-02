@@ -23,9 +23,9 @@ const Player = (props) => {
   if (!itemDetails.user || itemDetails.id !== selectedId) {
     return null;
   }
-  const { title, id, permalink_url } = itemDetails;
-  console.log("object;", permalink_url);
-  const { avatar_url, username } = itemDetails && itemDetails.user;
+  const { title, id, permalinkUrl } = itemDetails;
+  console.log("object;", permalinkUrl);
+  const { avatarUrl, username } = itemDetails && itemDetails.user;
   const runFirst1 = `
     setTimeout(function(){
     document.querySelector('a.snippetUXPlayButton.sc-button-play.playButton.sc-button.m-stretch').click();
@@ -54,7 +54,7 @@ const Player = (props) => {
         <View style={styles.content}>
           <View style={styles.imageView}>
             <Image
-              source={{ uri: avatar_url }}
+              source={{ uri: avatarUrl }}
               resizeMode="cover"
               style={[styles.image]}
             />
@@ -106,13 +106,13 @@ const Player = (props) => {
         </View>
       </View>
       {Platform.OS === "ios" && playPause && (
-        <LayoutIOS runFirst1={runFirst1} permalink_url={permalink_url} />
+        <LayoutIOS runFirst1={runFirst1} permalinkUrl={permalinkUrl} />
       )}
      {Platform.OS === "android" && playPause && (
        <View>
           <WebView
           source={{
-            uri: permalink_url,
+            uri: permalinkUrl,
           }}
           injectedJavaScript={runFirst}
           userAgent={"webview"}

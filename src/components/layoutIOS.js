@@ -2,13 +2,13 @@ import React from "react";
 import { View, Text } from "react-native";
 import { WebView } from "react-native-webview";
 const layoutIOS = (props) => {
-  const { runFirst1, permalink_url } = props;
+  const { runFirst1, permalinkUrl } = props;
   return (
     <View>
       <WebView
         ref={(refs) => (webview = refs)}
         source={{
-          uri: permalink_url,
+          uri: permalinkUrl,
         }}
         injectedJavaScript={runFirst1}
         userAgent={"webview"}
